@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lost Item Information</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://rsms.me/">
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            font-family: 'Inter', sans-serif;
+        }
+        @supports (font-variation-settings: normal) {
+            :root { font-family: 'Inter var', sans-serif; }
+        }
+        body {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Main container to center the content -->
+    <div class="min-h-screen flex items-center justify-center p-4">
+        
+        <!-- The main card with the information -->
+        <div class="max-w-2xl w-full bg-white rounded-2xl shadow-sm border border-gray-200 p-8 md:p-12">
+            
+            <header class="text-center mb-8">
+                <h1 class="text-3xl font-bold text-gray-800 tracking-tight">Thank You For Your Help</h1>
+                <p class="text-gray-500 mt-2">I really appreciate you taking the time to return my lost item.</p>
+            </header>
+
+            <!-- A special section for the item name, like a digital label -->
+            <div class="bg-gray-100 rounded-xl p-6 text-center mb-10">
+                <p class="text-sm font-medium text-gray-500 tracking-widest uppercase">Lost Item</p>
+                <p id="itemName" class="text-2xl font-semibold text-gray-900 mt-1">NAME OF THE ITEM</p>
+            </div>
+
+            <h2 class="text-xl font-semibold text-gray-800 mb-5">Return Information</h2>
+
+            <!-- Grid layout for the two return scenarios -->
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- Card for "Found at School" -->
+                <div class="bg-gray-50 rounded-lg p-6 border border-gray-200/80">
+                    <h3 class="font-semibold text-gray-700">If found at Heep Woh College:</h3>
+                    <p class="text-gray-600 text-sm mt-3">Please return it to either:</p>
+                    <ul class="mt-4 space-y-3 text-sm text-gray-800">
+                        <li class="flex items-start">
+                            <span class="text-blue-500 mr-2 mt-0.5">&#8594;</span>
+                            <span><strong>Wong Tsz Fung</strong> in class <strong>4E(27)</strong>.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-blue-500 mr-2 mt-0.5">&#8594;</span>
+                            <span>The <strong>School Office</strong>, with my name and class information.</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Card for "Found Elsewhere" -->
+                <div class="bg-gray-50 rounded-lg p-6 border border-gray-200/80">
+                    <h3 class="font-semibold text-gray-700">If found outside the school:</h3>
+                    <p class="text-gray-600 text-sm mt-3">Please get in touch with me directly.</p>
+                </div>
+            </div>
+
+            <!-- Contact details section -->
+            <div class="mt-8">
+                 <h3 class="text-lg font-semibold text-gray-800 mb-4">My Contact Details</h3>
+                <div class="space-y-4">
+                    <!-- WhatsApp Contact -->
+                    <a href="https://wa.me/85265329041" target="_blank" class="flex items-center p-3 -m-3 rounded-lg hover:bg-gray-100 transition-colors duration-200">
+                        <div class="w-10 h-10 bg-green-100 text-green-600 rounded-full flex items-center justify-center">
+                            <i data-lucide="message-square"></i>
+                        </div>
+                        <div class="ml-4">
+                            <p class="font-semibold text-gray-800">Wong Tsz Fung Marco</p>
+                            <p class="text-sm text-gray-500">WhatsApp: +852 6532 9041</p>
+                        </div>
+                    </a>
+                    <!-- Email Contact -->
+                     <a href="mailto:me@mmw1984.com" class="flex items-center p-3 -m-3 rounded-lg hover:bg-gray-100 transition-colors duration-200">
+                        <div class="w-10 h-10 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center">
+                            <i data-lucide="mail"></i>
+                        </div>
+                        <div class="ml-4">
+                            <p class="font-semibold text-gray-800">Email</p>
+                            <p class="text-sm text-gray-500">me@mmw1984.com</p>
+                        </div>
+                    </a>
+                    <a aria-label="Chat on WhatsApp" href="https://wa.me/85265329041"> <img alt="Chat on WhatsApp" src="WhatsAppButtonGreenLarge.svg" />
+                    </a>
+                    <!-- School Address -->
+                     <div class="flex items-center p-3 -m-3">
+                        <div class="w-10 h-10 bg-purple-100 text-purple-600 rounded-full flex items-center justify-center">
+                            <i data-lucide="building-2"></i>
+                        </div>
+                        <div class="ml-4">
+                            <p class="font-semibold text-gray-800">CCC Heep Woh College</p>
+                            <p class="text-sm text-gray-500">171 Po Kong Village Road, Tsz Wan Shan</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Final polite note in the footer -->
+            <footer class="border-t border-gray-200 mt-10 pt-6 text-center">
+                <p class="text-sm text-gray-500">If none of the above options are convenient, please contact me in advance to make other arrangements. Thank you!</p>
+            </footer>
+
+        </div>
+    </div>
+    <script>
+        lucide.createIcons();
+
+        // This script will read the item name from the URL
+        document.addEventListener('DOMContentLoaded', () => {
+            const itemNameElement = document.getElementById('itemName');
+            // Get the path from the URL (e.g., "/Physics_3A_book")
+            const path = window.location.pathname;
+
+            // Check if there is a path other than the root "/"
+            if (path && path.length > 1) {
+                // Remove the leading slash, replace underscores with spaces
+                const itemName = path.substring(1).replace(/_/g, ' ');
+                // Decode URI components for spaces and special characters
+                itemNameElement.textContent = decodeURIComponent(itemName);
+            }
+        });
+    </script>
+</body>
+</html>
+
