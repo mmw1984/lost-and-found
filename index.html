@@ -34,7 +34,7 @@
             </header>
 
             <!-- A special section for the item name, like a digital label -->
-            <div class="bg-gray-100 rounded-xl p-6 text-center mb-10">
+            <div id="lostItemBox" class="bg-gray-100 rounded-xl p-6 text-center mb-10">
                 <p class="text-sm font-medium text-gray-500 tracking-widest uppercase">Lost Item</p>
                 <p id="itemName" class="text-2xl font-semibold text-gray-900 mt-1">NAME OF THE ITEM</p>
             </div>
@@ -104,18 +104,33 @@
         </div>
     </div>
     <script>
-        lucide.createIcons();
+        // Handle lucide icons gracefully - only create if available
+        try {
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
+        } catch (e) {
+            console.log('Lucide icons not available');
+        }
 
         function updateItemInfo() {
             const itemNameElement = document.getElementById('itemName');
             const contactInfo = document.getElementById('contact-info');
             const whatsappButton = document.getElementById('whatsapp-button');
+            const lostItemBox = document.getElementById('lostItemBox');
             
             const backendUrl = 'http://localhost:3000'; // Replace with your actual backend URL when deployed
 
             // Get the hash from the URL (e.g., "#Physics Book 3A")
             const hash = window.location.hash;
             let itemName = "NAME OF THE ITEM";
+
+            // Hide the LOST ITEM box if the hash is "#qrcode"
+            if (hash === "#qrcode") {
+                lostItemBox.style.display = 'none';
+            } else {
+                lostItemBox.style.display = 'block';
+            }
 
             // Check if there is a hash
             if (hash && hash.length > 1) {
