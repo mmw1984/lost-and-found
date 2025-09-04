@@ -28,47 +28,62 @@
         <!-- The main card with the information -->
         <div class="max-w-2xl w-full bg-white rounded-2xl shadow-sm border border-gray-200 p-8 md:p-12">
             
+            <!-- Language Picker -->
+            <div class="flex justify-end mb-6">
+                <div class="relative">
+                    <select id="languageSelector" class="appearance-none bg-gray-50 border border-gray-200 rounded-lg px-4 py-2 pr-8 text-sm font-medium text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent cursor-pointer">
+                        <option value="en">English</option>
+                        <option value="zh-TW">繁體中文</option>
+                    </select>
+                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-500">
+                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                            <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            
             <header class="text-center mb-8">
-                <h1 class="text-3xl font-bold text-gray-800 tracking-tight">Thanks For Your Help</h1>
-                <p class="text-gray-500 mt-2">I really appreciate you taking the time to return my lost item.</p>
+                <h1 class="text-3xl font-bold text-gray-800 tracking-tight" data-i18n="header.title">Thanks For Your Help</h1>
+                <p class="text-gray-500 mt-2" data-i18n="header.subtitle">I really appreciate you taking the time to return my lost item.</p>
             </header>
 
             <!-- A special section for the item name, like a digital label -->
             <div id="lostItemBox" class="bg-gray-100 rounded-xl p-6 text-center mb-10">
-                <p class="text-sm font-medium text-gray-500 tracking-widest uppercase">Lost Item</p>
+                <p class="text-sm font-medium text-gray-500 tracking-widest uppercase" data-i18n="item.label">Lost Item</p>
                 <p id="itemName" class="text-2xl font-semibold text-gray-900 mt-1">NAME OF THE ITEM</p>
             </div>
 
-            <h2 class="text-xl font-semibold text-gray-800 mb-5">Return Information</h2>
+            <h2 class="text-xl font-semibold text-gray-800 mb-5" data-i18n="return.title">Return Information</h2>
 
             <!-- Grid layout for the two return scenarios -->
             <div class="grid md:grid-cols-2 gap-6">
                 <!-- Card for "Found at School" -->
                 <div class="bg-gray-50 rounded-lg p-6 border border-gray-200/80">
-                    <h3 class="font-semibold text-gray-700">If found at Heep Woh College:</h3>
-                    <p class="text-gray-600 text-sm mt-3">Please return it to either:</p>
+                    <h3 class="font-semibold text-gray-700" data-i18n="return.school.title">If found at Heep Woh College:</h3>
+                    <p class="text-gray-600 text-sm mt-3" data-i18n="return.school.subtitle">Please return it to either:</p>
                     <ul class="mt-4 space-y-3 text-sm text-gray-800">
                         <li class="flex items-start">
                             <span class="text-blue-500 mr-2 mt-0.5">&#8594;</span>
-                            <span><strong>Wong Tsz Fung</strong> in class <strong>4E(27)</strong>.</span>
+                            <span><strong data-i18n="return.school.option1.name">Wong Tsz Fung</strong> <span data-i18n="return.school.option1.class">in class</span> <strong data-i18n="return.school.option1.classnum">4E(27)</strong><span data-i18n="return.school.option1.period">.</span></span>
                         </li>
                         <li class="flex items-start">
                             <span class="text-blue-500 mr-2 mt-0.5">&#8594;</span>
-                            <span>The <strong>School Office</strong>, with my name and class information.</span>
+                            <span><span data-i18n="return.school.option2.the">The</span> <strong data-i18n="return.school.option2.office">School Office</strong><span data-i18n="return.school.option2.info">, with my name and class information.</span></span>
                         </li>
                     </ul>
                 </div>
                 
                 <!-- Card for "Found Elsewhere" -->
                 <div class="bg-gray-50 rounded-lg p-6 border border-gray-200/80">
-                    <h3 class="font-semibold text-gray-700">If found outside the school:</h3>
-                    <p class="text-gray-600 text-sm mt-3">Please get in touch with me directly via either WhatsApp (suggested) OR email to find the best way for both of us.</p>
+                    <h3 class="font-semibold text-gray-700" data-i18n="return.outside.title">If found outside the school:</h3>
+                    <p class="text-gray-600 text-sm mt-3" data-i18n="return.outside.subtitle">Please get in touch with me directly via either WhatsApp (suggested) OR email to find the best way for both of us.</p>
                 </div>
             </div>
 
             <!-- Contact details section -->
             <div id="contact-info" class="mt-8">
-                 <h3 class="text-lg font-semibold text-gray-800 mb-6">My Contact Details</h3>
+                 <h3 class="text-lg font-semibold text-gray-800 mb-6" data-i18n="contact.title">My Contact Details</h3>
                 <div class="space-y-6">
                     <!-- Name -->
                     <div class="bg-gray-50 rounded-lg p-4 border border-gray-200/80 text-center">
@@ -84,13 +99,13 @@
                     
                     <!-- Email -->
                     <div class="bg-gray-50 rounded-lg p-4 border border-gray-200/80 text-center">
-                        <p class="font-semibold text-gray-800 mb-1">Email</p>
+                        <p class="font-semibold text-gray-800 mb-1" data-i18n="contact.email">Email</p>
                         <a href="mailto:me@mmw1984.com" class="text-blue-600 hover:text-blue-800 transition-colors">me@mmw1984.com</a>
                     </div>
                     
                     <!-- School Address -->
                     <div class="bg-gray-50 rounded-lg p-4 border border-gray-200/80 text-center">
-                        <p class="font-semibold text-gray-800 mb-1">My School Address: CCC Heep Woh College</p>
+                        <p class="font-semibold text-gray-800 mb-1" data-i18n="contact.school">My School Address: CCC Heep Woh College</p>
                         <p class="text-gray-600">171 Po Kong Village Road, Tsz Wan Shan</p>
                     </div>
                 </div>
@@ -98,12 +113,96 @@
 
             <!-- Final polite note in the footer -->
             <footer class="border-t border-gray-200 mt-10 pt-6 text-center">
-                <p class="text-sm text-gray-500">If none of the above options are convenient, please contact me via WhatsApp (suggested) OR email in advance to make other arrangements. Thank you!</p>
+                <p class="text-sm text-gray-500" data-i18n="footer.note">If none of the above options are convenient, please contact me via WhatsApp (suggested) OR email in advance to make other arrangements. Thank you!</p>
             </footer>
 
         </div>
     </div>
     <script>
+        // Translation data
+        const translations = {
+            'en': {
+                'header.title': 'Thanks For Your Help',
+                'header.subtitle': 'I really appreciate you taking the time to return my lost item.',
+                'item.label': 'Lost Item',
+                'return.title': 'Return Information',
+                'return.school.title': 'If found at Heep Woh College:',
+                'return.school.subtitle': 'Please return it to either:',
+                'return.school.option1.name': 'Wong Tsz Fung',
+                'return.school.option1.class': 'in class',
+                'return.school.option1.classnum': '4E(27)',
+                'return.school.option1.period': '.',
+                'return.school.option2.the': 'The',
+                'return.school.option2.office': 'School Office',
+                'return.school.option2.info': ', with my name and class information.',
+                'return.outside.title': 'If found outside the school:',
+                'return.outside.subtitle': 'Please get in touch with me directly via either WhatsApp (suggested) OR email to find the best way for both of us.',
+                'contact.title': 'My Contact Details',
+                'contact.email': 'Email',
+                'contact.school': 'My School Address: CCC Heep Woh College',
+                'footer.note': 'If none of the above options are convenient, please contact me via WhatsApp (suggested) OR email in advance to make other arrangements. Thank you!'
+            },
+            'zh-TW': {
+                'header.title': '感謝您的協助',
+                'header.subtitle': '非常感謝您花時間歸還我的遺失物品。',
+                'item.label': '遺失物品',
+                'return.title': '歸還資訊',
+                'return.school.title': '如在協和書院找到：',
+                'return.school.subtitle': '請歸還給以下任一方：',
+                'return.school.option1.name': '黃子鋒',
+                'return.school.option1.class': '班級',
+                'return.school.option1.classnum': '4E(27)',
+                'return.school.option1.period': '。',
+                'return.school.option2.the': '',
+                'return.school.option2.office': '校務處',
+                'return.school.option2.info': '，請提供我的姓名和班級資訊。',
+                'return.outside.title': '如在校外找到：',
+                'return.outside.subtitle': '請直接透過WhatsApp（建議）或電子郵件與我聯繫，以找到對我們雙方都方便的方式。',
+                'contact.title': '我的聯絡資訊',
+                'contact.email': '電子郵件',
+                'contact.school': '我的學校地址：中華基督教會協和書院',
+                'footer.note': '如果以上選項都不方便，請事先透過WhatsApp（建議）或電子郵件聯繫我以作其他安排。謝謝！'
+            }
+        };
+
+        // Current language
+        let currentLanguage = localStorage.getItem('language') || 'en';
+
+        // Initialize translation
+        function setLanguage(lang) {
+            currentLanguage = lang;
+            localStorage.setItem('language', lang);
+            
+            // Update HTML lang attribute
+            document.documentElement.lang = lang === 'zh-TW' ? 'zh-TW' : 'en';
+            
+            // Update all elements with data-i18n attribute
+            const elements = document.querySelectorAll('[data-i18n]');
+            elements.forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+
+            // Update language selector
+            const selector = document.getElementById('languageSelector');
+            if (selector) {
+                selector.value = lang;
+            }
+        }
+
+        // Language selector event handler
+        function initLanguageSelector() {
+            const selector = document.getElementById('languageSelector');
+            if (selector) {
+                selector.value = currentLanguage;
+                selector.addEventListener('change', function() {
+                    setLanguage(this.value);
+                });
+            }
+        }
+
         // Handle lucide icons gracefully - only create if available
         try {
             if (typeof lucide !== 'undefined') {
@@ -163,7 +262,11 @@
                 });
         }
 
-        document.addEventListener('DOMContentLoaded', updateItemInfo);
+        document.addEventListener('DOMContentLoaded', function() {
+            initLanguageSelector();
+            setLanguage(currentLanguage);
+            updateItemInfo();
+        });
         
         // Update when hash changes (for dynamic navigation)
         window.addEventListener('hashchange', updateItemInfo);
