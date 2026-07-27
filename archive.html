@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lost Item Information</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://rsms.me/">
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            font-family: 'Inter', sans-serif;
+        }
+        @supports (font-variation-settings: normal) {
+            :root { font-family: 'Inter var', sans-serif; }
+        }
+        body {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Main container to center the content -->
+    <div class="min-h-screen flex items-center justify-center p-4">
+        
+        <!-- The main card with the information -->
+        <div class="max-w-2xl w-full bg-white rounded-2xl shadow-sm border border-gray-200 p-8 md:p-12">
+            
+            <!-- Language Picker -->
+            <div class="flex justify-end mb-6">
+                <div class="relative">
+                    <select id="languageSelector" class="appearance-none bg-gray-50 border border-gray-200 rounded-lg px-4 py-2 pr-8 text-sm font-medium text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent cursor-pointer">
+                        <option value="en">English</option>
+                        <option value="zh-TW">繁體中文</option>
+                    </select>
+                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-500">
+                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                            <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            
+            <header class="text-center mb-8">
+                <h1 class="text-3xl font-bold text-gray-800 tracking-tight" data-i18n="header.title">Thanks For Your Help</h1>
+                <p class="text-gray-500 mt-2" data-i18n="header.subtitle">I really appreciate you taking the time to return my lost item.</p>
+            </header>
+
+            <!-- A special section for the item name, like a digital label -->
+            <div id="lostItemBox" class="bg-gray-100 rounded-xl p-6 text-center mb-10">
+                <p class="text-sm font-medium text-gray-500 tracking-widest uppercase" data-i18n="item.label">Lost Item</p>
+                <p id="itemName" class="text-2xl font-semibold text-gray-900 mt-1">NAME OF THE ITEM</p>
+            </div>
+
+            <h2 class="text-xl font-semibold text-gray-800 mb-5" data-i18n="return.title">Return Information</h2>
+
+            <!-- Grid layout for the two return scenarios -->
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- Card for "Found at School" -->
+                <div class="bg-gray-50 rounded-lg p-6 border border-gray-200/80">
+                    <h3 class="font-semibold text-gray-700" data-i18n="return.school.title">If found at Heep Woh College:</h3>
+                    <p class="text-gray-600 text-sm mt-3" data-i18n="return.school.subtitle">Please return it to either:</p>
+                    <ul class="mt-4 space-y-3 text-sm text-gray-800">
+                        <li class="flex items-start">
+                            <span class="text-blue-500 mr-2 mt-0.5">&#8594;</span>
+                            <span><strong data-i18n="return.school.option1.name">Wong Tsz Fung</strong> <span data-i18n="return.school.option1.class">in class</span> <strong data-i18n="return.school.option1.classnum">4E(27)</strong><span data-i18n="return.school.option1.period">.</span></span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-blue-500 mr-2 mt-0.5">&#8594;</span>
+                            <span><span data-i18n="return.school.option2.the">The</span> <strong data-i18n="return.school.option2.office">School Office</strong><span data-i18n="return.school.option2.info">, with my name and class information.</span></span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Card for "Found Elsewhere" -->
+                <div class="bg-gray-50 rounded-lg p-6 border border-gray-200/80">
+                    <h3 class="font-semibold text-gray-700" data-i18n="return.outside.title">If found outside the school:</h
+... (truncated)
