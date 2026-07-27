@@ -58,72 +58,25 @@ function text(value) {
   return value || "—";
 }
 
-function escapeHtml(value) {
-  return String(value)
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;");
-}
-
-function tableValue(value, maxLength = 180) {
-  return text(value).replace(/\s+/g, " ").slice(0, maxLength);
-}
-
-function tableRow(label, value) {
-  return `${label.padEnd(12)} | ${tableValue(value)}`;
-}
-
-function allowedPageUrl(value, env) {
-  try {
-    const url = new URL(value);
-    const allowedOrigins = env.ALLOWED_ORIGINS.split(",").map((origin) => origin.trim());
-    return url.protocol === "https:" && allowedOrigins.includes(url.origin) ? url.href : "";
-  } catch {
-    return "";
-  }
-}
-
 async function sendTelegram(data, env) {
   const phone = new Set(["whatsapp", "line"]).has(data.contactMethod)
     ? `${data.countryCode} ${data.contactValue}`.trim()
     : data.contactValue;
   const location = data.locationMode === "gps"
-    ? `${data.latitude}, ${data.longitude}`
+    ? `${data.latitude}, ${data.longitude}\nhttps://maps.google.com/?q=${encodeURIComponent(`${data.latitude},${data.longitude}`)}`
     : data.location;
-  const receivedAt = new Intl.DateTimeFormat("en-HK", {
-    timeZone: "Asia/Hong_Kong",
-    dateStyle: "medium",
-    timeStyle: "medium"
-  }).format(new Date());
-  const reference = crypto.randomUUID().split("-")[0].toUpperCase();
-  const table = [
-    tableRow("Reference", reference),
-    tableRow("Received", receivedAt),
-    tableRow("Item", data.item),
-    tableRow("Finder", data.name),
-    tableRow("Method", data.contactMethod.toUpperCase()),
-    tableRow("Contact", phone),
-    tableRow("Location", location),
-    tableRow("Language", data.language)
-  ].join("\n");
   const message = [
-    "<b>Lost item contact</b>",
-    "A finder has submitted the return form.",
+    "[Lost item contact]",
     "",
-    `<pre>${escapeHtml(table)}</pre>`,
-    "<b>Message</b>",
-    escapeHtml(text(data.message))
+    `Item: ${text(data.item)}`,
+    `Name: ${data.name}`,
+    `Contact method: ${data.contactMethod}`,
+    `Contact: ${phone}`,
+    `Location: ${location}`,
+    `Message: ${text(data.message)}`,
+    `Language: ${text(data.language)}`,
+    `Page: ${text(data.pageUrl)}`
   ].join("\n");
-
-  const buttons = [];
-  const actionRow = [];
-  if (data.locationMode === "gps") {
-    actionRow.push({ text: "Open map", url: `https://maps.google.com/?q=${encodeURIComponent(`${data.latitude},${data.longitude}`)}` });
-  }
-  const sourceUrl = allowedPageUrl(data.pageUrl, env);
-  if (sourceUrl) actionRow.push({ text: "Open source page", url: sourceUrl });
-  if (actionRow.length) buttons.push(actionRow);
 
   const response = await fetch(env.NOTIFY_API_URL, {
     method: "POST",
@@ -133,10 +86,8 @@ async function sendTelegram(data, env) {
     },
     body: JSON.stringify({
       text: message,
-      parse_mode: "HTML",
       link_preview: false,
-      disable_notification: false,
-      buttons
+      disable_notification: false
     })
   });
 
