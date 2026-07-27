@@ -5,7 +5,7 @@
   "compatibility_date": "2026-07-27",
   "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
   "vars": {
-    "ALLOWED_ORIGINS": "https://mmw1984.github.io,https://found.marcow.poke.site,http://localhost:4173,http://127.0.0.1:4173"
+    "ALLOWED_ORIGINS": "https://mmw1984.github.io,https://mmw1984.com,https://found.marcow.poke.site,http://localhost:4173,http://127.0.0.1:4173"
   },
   "observability": {
     "enabled": true,
