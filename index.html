@@ -112,11 +112,11 @@
           <fieldset class="field method-field">
             <legend data-i18n="form.method">Contact Method</legend>
             <div class="method-grid" id="methodGrid">
-              <label class="method-option"><input type="radio" name="contactMethod" value="whatsapp" checked><span><svg class="method-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M20 11.6a8 8 0 0 1-11.8 7L4 20l1.4-4.1A8 8 0 1 1 20 11.6Z"/><path d="M9 8.2c.5 2.6 2.2 4.3 4.8 4.9"/></svg>WhatsApp</span></label>
-              <label class="method-option"><input type="radio" name="contactMethod" value="telegram"><span><svg class="method-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m3 11 17-7-4 16-5-6-4 3 1-5 8-5"/></svg>Telegram</span></label>
-              <label class="method-option"><input type="radio" name="contactMethod" value="discord"><span><svg class="method-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M7 7a13 13 0 0 1 10 0l2 10a12 12 0 0 1-4 2l-1-2a9 9 0 0 0 3-1c-3 1.4-7 1.4-10 0a9 9 0 0 0 3 1l-1 2a12 12 0 0 1-4-2Z"/><circle cx="9" cy="12" r="1"/><circle cx="15" cy="12" r="1"/></svg>Discord</span></label>
-              <label class="method-option"><input type="radio" name="contactMethod" value="line"><span><svg class="method-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M20 11c0 4-3.6 7-8 7h-1l-4 2 1-3c-2.4-1.2-4-3.4-4-6 0-4 3.6-7 8-7s8 3 8 7Z"/></svg>LINE</span></label>
-              <label class="method-option"><input type="radio" name="contactMethod" value="instagram"><span><svg class="method-icon" aria-hidden="true" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="5"/><circle cx="12" cy="12" r="4"/><circle class="method-dot" cx="17.5" cy="6.5" r="1"/></svg>Instagram</span></label>
+              <label class="method-option"><input type="radio" name="contactMethod" value="whatsapp" checked><span><i class="method-icon brand-icon brand-whatsapp" aria-hidden="true"></i>WhatsApp</span></label>
+              <label class="method-option"><input type="radio" name="contactMethod" value="telegram"><span><i class="method-icon brand-icon brand-telegram" aria-hidden="true"></i>Telegram</span></label>
+              <label class="method-option"><input type="radio" name="contactMethod" value="discord"><span><i class="method-icon brand-icon brand-discord" aria-hidden="true"></i>Discord</span></label>
+              <label class="method-option"><input type="radio" name="contactMethod" value="line"><span><i class="method-icon brand-icon brand-line" aria-hidden="true"></i>LINE</span></label>
+              <label class="method-option"><input type="radio" name="contactMethod" value="instagram"><span><i class="method-icon brand-icon brand-instagram" aria-hidden="true"></i>Instagram</span></label>
               <label class="method-option"><input type="radio" name="contactMethod" value="email"><span><svg class="method-icon" aria-hidden="true" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg>Email</span></label>
             </div>
           </fieldset>
@@ -202,5 +202,13 @@
       <a href="#top" class="back-top pressable" data-i18n="footer.top">Back to top &#8593;</a>
     </footer>
   </main>
+
+  <dialog class="success-dialog" id="successDialog" aria-labelledby="successTitle" aria-describedby="successMessage">
+    <div class="success-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m6 12 4 4 8-9"/></svg></div>
+    <p class="section-label" data-i18n="confirm.kicker">Message sent</p>
+    <h2 id="successTitle" data-i18n="confirm.title">Contact details received</h2>
+    <p id="successMessage" data-i18n="confirm.message">Thank you for helping. I will get back to you as soon as I can.</p>
+    <button class="submit-button pressable" id="successClose" type="button"><span data-i18n="confirm.close">Done</span><span aria-hidden="true">&#10003;</span></button>
+  </dialog>
 </body>
 </html>

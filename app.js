@@ -53,6 +53,10 @@ const translations = {
     "form.success": "Thank you — your contact details have been sent.",
     "form.noEndpoint": "The form endpoint is not configured yet. Please use WhatsApp or email below.",
     "form.failed": "The message could not be sent. Please try WhatsApp or email below.",
+    "confirm.kicker": "Message sent",
+    "confirm.title": "Contact details received",
+    "confirm.message": "Thank you for helping. I will get back to you as soon as I can.",
+    "confirm.close": "Done",
     "footer.note": "If none of the above options are convenient, please contact me via WhatsApp (suggested) OR email in advance to make other arrangements. Thank you!",
     "footer.top": "Back to top ↑",
     "theme.light": "Switch to light mode",
@@ -109,6 +113,10 @@ const translations = {
     "form.success": "已收到，謝謝你的幫忙！我會盡快聯絡你。",
     "form.noEndpoint": "聯絡表格暫時未能使用，請改用下方的 WhatsApp 或電郵聯絡我。",
     "form.failed": "暫時未能傳送資料，請稍後再試，或改用下方的 WhatsApp／電郵聯絡我。",
+    "confirm.kicker": "已成功傳送",
+    "confirm.title": "聯絡資料已收到",
+    "confirm.message": "謝謝你幫忙！我會盡快聯絡你，商量交收安排。",
+    "confirm.close": "完成",
     "footer.note": "如果以上方法都不方便，歡迎先透過 WhatsApp（建議）或電郵聯絡我，再另作安排。謝謝！",
     "footer.top": "返回頁首 ↑",
     "theme.light": "切換至淺色模式",
@@ -370,6 +378,7 @@ async function submitForm(event) {
     const response = await fetch(endpoint, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(data) });
     if (!response.ok) throw new Error(`Request failed: ${response.status}`);
     showStatus(t("form.success"), "success");
+    if (!byId("successDialog").open) byId("successDialog").showModal();
     form.reset();
     selectedCountryIso = "HK";
     byId("messageCount").textContent = "0";
@@ -424,5 +433,7 @@ document.addEventListener("DOMContentLoaded", () => {
   byId("message").addEventListener("input", (event) => { byId("messageCount").textContent = event.target.value.length; });
   byId("qrcodeItem").addEventListener("input", (event) => { state.itemName = event.target.value.trim(); byId("formItemName").value = state.itemName; clearError("item"); });
   byId("contactForm").addEventListener("submit", submitForm);
+  byId("successClose").addEventListener("click", () => byId("successDialog").close());
+  byId("successDialog").addEventListener("click", (event) => { if (event.target === byId("successDialog")) byId("successDialog").close(); });
   window.addEventListener("hashchange", updateItemInfo);
 });
